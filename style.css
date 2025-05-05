@@ -1,8 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background: url('dados/img/fundo.gif') no-repeat center/cover; /* Fundo da página */
-    color: #fff;
-    text-align: center;
+    background: url('dados/img/fundo.gif') no-repeat center center;
+background-size: cover;
 }
 
 .banner {
