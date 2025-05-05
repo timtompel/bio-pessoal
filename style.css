@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('dados/img/fundo.gif') no-repeat center/cover; /* Fundo da página */
+    color: #fff;
+    text-align: center;
+}
+
+.banner {
+    width: 320px;
+    height: 250px;
+    background: url('dados/img/foto.png') no-repeat center/cover; /* Restaura o banner */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.bio {
+    padding: 20px;
+}
+
+.redes-sociais a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background: #333;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+.redes-sociais a img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+.redes-sociais a:hover {
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00 inset;
+    transform: scale(1.1);
+}
+
+.redes-sociais a i {
+    font-size: 20px; /* Tamanho do ícone */
+    color: #fff; /* Cor do ícone */
+    display: inline-block;
+    line-height: 50px; /* Centraliza verticalmente */
+}
+
+.redes-sociais a span {
+    display: none; /* Oculta o texto */
+}
+
+footer {
+    padding: 20px;
+    background: #222;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .redes-sociais {
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 0;
+}
+```
+<footer>
+    <div class="redes-sociais">
+        <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.tiktok.com/@timtompel" class="social tiktok" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.youtube.com/@timtompel3230" class="social youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/emmanueltargino071985/" class="social instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <p>© 2025 Todos os direitos reservados. Este layout é protegido por direitos autorais.</p>
+</footer>
