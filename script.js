@@ -1,4 +1,4 @@
-let sound = new Audio('./dados/sound/coin.mp3'); // Caminho local para o som
+let sound = new Audio('./dados/sound/coin.mp3'); // Caminho correto para o som
 
 // Desbloqueia o áudio na primeira interação do usuário
 document.body.addEventListener('click', () => {
