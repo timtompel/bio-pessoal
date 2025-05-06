@@ -39,21 +39,29 @@ section.bio {
 
 /* Rodapé */
 footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto branca */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 footer .redes-sociais a {
-    margin: 0 10px;
-    color: #fff;
+    color: #fff; /* Cor dos ícones */
+    font-size: 24px;
     text-decoration: none;
-    font-size: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 footer .redes-sociais a:hover {
     color: #1da1f2; /* Cor de destaque ao passar o mouse */
+    transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
 
 .banner {
