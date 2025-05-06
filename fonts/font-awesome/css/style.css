@@ -141,6 +141,16 @@ video {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.ours-countdown-text {
+    -webkit-backdrop-filter: blur(1.35914px); /* Compatível com Safari */
+    backdrop-filter: blur(1.35914px);
+}
+
+.ours-select .option {
+    -webkit-user-select: none; /* Compatível com Safari */
+    user-select: none;
+}
 ```
 <footer>
     <div class="redes-sociais">
