@@ -1,7 +1,48 @@
+/* Estilo geral */
 body {
     font-family: 'Roboto', sans-serif;
-    background: url('dados/img/fundo.png') no-repeat center center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Banner */
+header.banner {
+    background-image: url('banner.jpg'); /* Substitua por um caminho válido */
     background-size: cover;
+    background-position: center;
+    height: 300px;
+}
+
+/* Seção da bio */
+section.bio {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Rodapé */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+footer .redes-sociais a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+footer .redes-sociais a:hover {
+    color: #1da1f2; /* Cor de destaque ao passar o mouse */
 }
 
 .banner {
@@ -58,14 +99,6 @@ body {
 
 .redes-sociais a span {
     display: none; /* Oculta o texto */
-}
-
-footer {
-    padding: 20px;
-    background: #222;
-    color: #fff;
-    text-align: center;
-    margin-top: 20px;
 }
 
 footer .redes-sociais {
