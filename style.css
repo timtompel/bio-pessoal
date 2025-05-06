@@ -4,13 +4,16 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
+    background-image: url('./dados/img/fundo.png'); /* Caminho correto para o fundo */
+    background-size: cover; /* Ajusta o fundo para cobrir toda a página */
+    background-position: center; /* Centraliza o fundo */
+    background-attachment: fixed; /* Faz o fundo permanecer fixo ao rolar a página */
     color: #333;
 }
 
 /* Banner */
 header.banner {
-    background-image: url('./dados/img/foto.png'); /* Caminho correto para a imagem */
+    background-image: url('./dados/img/foto.png'); /* Caminho correto para a imagem do banner */
     background-size: cover;
     background-position: center;
     height: 300px;
@@ -22,7 +25,6 @@ header.banner {
     font-size: 2rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    background-color: #363737; /* Cor de fundo temporária */
 }
 
 /* Seção da bio */
