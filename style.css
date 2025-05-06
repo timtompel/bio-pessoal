@@ -1,14 +1,13 @@
 body {
-    body {
     font-family: 'Roboto', sans-serif;
     background: url('dados/img/fundo.png') no-repeat center center;
-background-size: cover;
+    background-size: cover;
 }
 
 .banner {
-    width: 320px;
-    height: 250px;
-    background: url('dados/img/foto.png') no-repeat center/cover; /* Restaura o banner */
+    width: 100%;
+    max-width: 320px; /* Limite máximo */
+    background: url('dados/img/foto.png') no-repeat center/cover; /* Imagem do banner */
     position: relative;
     overflow: hidden;
     margin: 0 auto; /* Centraliza horizontalmente */
