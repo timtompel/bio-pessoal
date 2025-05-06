@@ -1,5 +1,6 @@
 body {
-    font-family: Anton Bold, sans-serif;
+    body {
+    font-family: 'Roboto', sans-serif;
     background: url('dados/img/fundo.png') no-repeat center center;
 background-size: cover;
 }
