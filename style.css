@@ -11,6 +11,7 @@ background-size: cover;
     position: relative;
     overflow: hidden;
     margin: 0 auto; /* Centraliza horizontalmente */
+    border-radius: 15px; /* Define bordas arredondadas */
 }
 
 .bio {
