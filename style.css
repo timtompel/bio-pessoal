@@ -16,10 +16,9 @@ background-size: cover;
 }
 
 .bio {
-    text-transform: uppercase; /* Transforma o texto em caixa alta */
-    text-align: center; /* Centraliza o texto horizontalmente */
-    font-weight: bold; /* Deixa o texto mais destacado (opcional) */
-    font-size: 20px; /* Ajusta o tamanho da fonte (opcional) */
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #333;
 }
 
 .redes-sociais a {
