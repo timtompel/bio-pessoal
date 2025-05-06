@@ -120,6 +120,20 @@ footer p {
     font-size: 14px;
     margin: 0;
 }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 ```
 <footer>
     <div class="redes-sociais">
