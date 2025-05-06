@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-image: url('./dados/img/fundo.png'); /* Caminho correto para o fundo */
+    background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo ao CSS */
     background-size: cover; /* Ajusta o fundo para cobrir toda a página */
     background-position: center; /* Centraliza o fundo */
     background-attachment: fixed; /* Faz o fundo permanecer fixo ao rolar a página */
@@ -13,7 +13,7 @@ body {
 
 /* Banner */
 header.banner {
-    background-image: url('./dados/img/foto.png'); /* Caminho correto para a imagem do banner */
+    background-image: url('../../../dados/img/foto.png'); /* Caminho relativo ao CSS */
     background-size: cover;
     background-position: center;
     height: 300px;
