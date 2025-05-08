@@ -20,14 +20,13 @@ document.querySelectorAll('.social').forEach(button => {
     });
 });
 
-// Adiciona animação ao carregar a página
+// Animação ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
     cards.forEach((card, index) => {
-        // Define um atraso para cada card com base no índice
         setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-        }, index * 200); // Atraso de 200ms entre os cards
+            card.style.opacity = "1"; // Torna visível
+            card.style.transform = "translateY(0)"; // Move para a posição original
+        }, index * 200); // Atraso de 200ms entre as animações das cartas
     });
 });
