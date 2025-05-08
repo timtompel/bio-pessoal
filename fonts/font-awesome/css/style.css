@@ -75,7 +75,6 @@ footer {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  margin-top: 30px;
 }
 
 footer .redes-sociais {
@@ -86,15 +85,15 @@ footer .redes-sociais {
 }
 
 footer .redes-sociais a {
-  color: #58a6ff;
-  text-decoration: none;
+  color: #fff;
   font-size: 24px;
+  text-decoration: none;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 footer .redes-sociais a:hover {
-  color: #1da1f2;
-  transform: scale(1.2);
+  color: #1da1f2; /* Cor de destaque ao passar o mouse */
+  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
 
 footer p {
