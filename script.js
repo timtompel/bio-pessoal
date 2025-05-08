@@ -1,5 +1,5 @@
 // Configuração de som para cliques e interações
-let sound = new Audio('./dados/sound/coin.mp3'); // Caminho correto para o som
+let sound = new Audio('.assets/sound/coin.mp3'); // Caminho correto para o som
 
 // Desbloqueia o áudio na primeira interação do usuário
 document.body.addEventListener('click', () => {
