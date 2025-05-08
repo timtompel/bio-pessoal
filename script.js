@@ -1,3 +1,4 @@
+// Configuração de som para cliques e interações
 let sound = new Audio('./dados/sound/coin.mp3'); // Caminho correto para o som
 
 // Desbloqueia o áudio na primeira interação do usuário
@@ -16,5 +17,17 @@ document.querySelectorAll('.social').forEach(button => {
         sound.play().catch(error => {
             console.error('Erro ao tentar reproduzir o som no mouseenter:', error);
         });
+    });
+});
+
+// Adiciona animação ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, index) => {
+        // Define um atraso para cada card com base no índice
+        setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }, index * 200); // Atraso de 200ms entre os cards
     });
 });
