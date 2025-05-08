@@ -1,179 +1,126 @@
-/* Fundo da página */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo ao CSS */
-    background-size: cover; /* Ajusta o fundo para cobrir toda a página */
-    background-position: center; /* Centraliza o fundo */
-    background-attachment: fixed; /* Faz o fundo permanecer fixo ao rolar a página */
-    color: #333;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Banner */
+body {
+  font-family: 'Roboto', sans-serif; /* Mantive 'Roboto', pois já está em uso */
+  margin: 0;
+  padding: 20px; /* Adicionado do código sugerido */
+  text-align: center;
+  line-height: 1.6; /* Adicionado do código sugerido */
+  background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo */
+  background-size: cover; /* Ajusta o fundo para cobrir toda a página */
+  background-position: center; /* Centraliza o fundo */
+  background-attachment: fixed; /* Faz o fundo permanecer fixo ao rolar a página */
+  color: #333;
+}
+
+/* Cabeçalho */
+header {
+  background: #0d1117; /* Cor de fundo escura */
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
 header.banner {
-    background-image: url('../../../dados/img/foto.png'); /* Caminho relativo ao CSS */
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-image: url('../../../dados/img/foto.png');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Navegação */
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+/* Grid de projetos */
+.grid-projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Seção da bio */
 section.bio {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px auto;
-    max-width: 800px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Rodapé */
 footer {
-    background-color: #333; /* Cor de fundo escura */
-    color: #fff; /* Cor do texto branca */
-    padding: 20px 0;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 30px;
 }
 
 footer .redes-sociais {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-footer .redes-sociais a {
-    color: #fff; /* Cor dos ícones */
-    font-size: 24px;
-    text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-footer .redes-sociais a:hover {
-    color: #1da1f2; /* Cor de destaque ao passar o mouse */
-    transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
-}
-
-.banner {
-    width: 100%;
-    max-width: 320px; /* Limite máximo */
-    background: url('dados/img/foto.png') no-repeat center/cover; /* Imagem do banner */
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto; /* Centraliza horizontalmente */
-    border-radius: 15px; /* Define bordas arredondadas */
-}
-
-.bio {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: #333;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
 .redes-sociais a {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    background: #333;
-    color: #fff;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    font-size: 20px;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
-    position: relative;
+  margin: 0 10px;
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 24px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.redes-sociais a img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-    display: block;
-    margin: auto;
-}
-
-.redes-sociais a:hover {
-    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00 inset;
-    transform: scale(1.1);
-}
-
-.redes-sociais a i {
-    font-size: 20px; /* Tamanho do ícone */
-    color: #fff; /* Cor do ícone */
-    display: inline-block;
-    line-height: 50px; /* Centraliza verticalmente */
-}
-
-.redes-sociais a span {
-    display: none; /* Oculta o texto */
-}
-
-footer .redes-sociais {
-    margin-bottom: 10px;
+footer .redes-sociais a:hover {
+  color: #1da1f2;
+  transform: scale(1.2);
 }
 
 footer p {
-    font-size: 14px;
-    margin: 0;
+  font-size: 14px;
+  margin: 0;
 }
 
-.video-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: center;
+/* Responsivo */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
 }
-
-video {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.video-container video {
-    width: 70%; /* Reduz o tamanho para 70% do tamanho original */
-    max-width: 560px; /* Define um limite máximo */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.ours-countdown-text {
-    -webkit-backdrop-filter: blur(1.35914px); /* Compatível com Safari */
-    backdrop-filter: blur(1.35914px);
-}
-
-.ours-select .option {
-    -webkit-user-select: none; /* Compatível com Safari */
-    user-select: none;
-}
-```
-<footer>
-    <div class="redes-sociais">
-        <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.tiktok.com/@timtompel" class="social tiktok" title="TikTok">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://www.youtube.com/@timtompel3230" class="social youtube" title="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com/emmanueltargino071985/" class="social instagram" title="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-    <p>© 2025 Targino Games. Todos os Direitos Reservados.</p>
-</footer>
