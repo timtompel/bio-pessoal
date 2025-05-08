@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Tecnológico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <!-- Link para o Font Awesome (opcional, para ícones) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./fonts/font-awesome/css/style.css?v=1.0">
-    <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
-    <link rel="stylesheet" href="./fonts/font-awesome/css/style.css?v=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio pessoal de Emmanuel Targino - Jogos, Tecnologia e Hobbies" />
+  <title>Targino Games</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Cabeçalho com o banner -->
-    <header class="banner">
-        <!-- A imagem será exibida como plano de fundo via CSS -->
-    </header>
+  <!-- Cabeçalho principal -->
+  <header aria-label="Cabeçalho principal">
+    <h1>Emmanuel Targino</h1>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Seção da bio -->
-    <section class="bio">
-    <h2>Sobre Mim</h2>
-    <p>Olá, sou Emmanuel Targino! Compartilho conteúdos sobre tecnologia, jogos e hobbies. Siga-me nas redes sociais para acompanhar minhas novidades.</p>
+  <!-- Conteúdo principal -->
+  <main>
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Desenvolvedor apaixonado por jogos e tecnologia. Aqui compartilho minhas experiências e projetos.</p>
     </section>
 
-    <!-- Rodapé com links para redes sociais -->
-    <footer>
-        <div class="redes-sociais">
-            <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.tiktok.com/@timtompel" class="social tiktok" title="TikTok" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.youtube.com/@timtompel3230" class="social youtube" title="YouTube" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.instagram.com/emmanueltargino071985/" class="social instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.twitch.tv/" class="social twitch" title="Twitch" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-twitch"></i>
-            </a>
+    <section id="projetos">
+      <h2>Projetos</h2>
+      <div class="grid-projetos">
+        <!-- Exemplo de um projeto -->
+        <div class="card">
+          <h3>Jogo 2D com Unity</h3>
+          <p>Descrição breve do projeto.</p>
         </div>
-        <p>Targino Games © 2025 </p>
-    </footer>
+        <!-- Adicione mais cards de projetos conforme necessário -->
+      </div>
+    </section>
 
-    <!-- Script JavaScript -->
-    <script src="script.js"></script>
+    <section id="contato">
+      <h2>Contato</h2>
+      <p>Entre em contato comigo através das redes sociais abaixo ou envie uma mensagem diretamente.</p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Targino Games. Todos os direitos reservados.</p>
+    <div class="redes-sociais">
+      <a href="https://github.com/timtompel" aria-label="GitHub">GitHub</a>
+      <a href="https://linkedin.com/in/emmanuel-targino" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://www.instagram.com/emmanueltargino071985/" aria-label="Instagram">Instagram</a>
+      <a href="https://www.youtube.com/@timtompel3230" aria-label="YouTube">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
