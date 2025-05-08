@@ -6,21 +6,20 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif; /* Mantive 'Roboto', pois já está em uso */
-  margin: 0;
-  padding: 20px; /* Adicionado do código sugerido */
-  text-align: center;
-  line-height: 1.6; /* Adicionado do código sugerido */
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
   background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo */
-  background-size: cover; /* Ajusta o fundo para cobrir toda a página */
-  background-position: center; /* Centraliza o fundo */
-  background-attachment: fixed; /* Faz o fundo permanecer fixo ao rolar a página */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #333;
+  padding: 20px;
+  text-align: center;
 }
 
 /* Cabeçalho */
 header {
-  background: #0d1117; /* Cor de fundo escura */
+  background: #0d1117;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -31,7 +30,6 @@ header.banner {
   background-size: cover;
   background-position: center;
   height: 300px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,11 +46,6 @@ nav ul {
   list-style: none;
 }
 
-nav ul li {
-  margin: 0;
-  padding: 0;
-}
-
 nav a {
   color: #58a6ff;
   text-decoration: none;
@@ -67,20 +60,13 @@ nav a {
 }
 
 .card {
-  background: #fff;
+  background-color: #fff;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Seção da bio */
-section.bio {
-  padding: 20px;
-  background-color: #fff;
-  margin: 20px auto;
-  max-width: 800px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Inicialmente invisível */
+  transform: translateY(20px); /* Deslocada para baixo */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Suaviza a transição */
 }
 
 /* Rodapé */
@@ -99,8 +85,7 @@ footer .redes-sociais {
   margin-bottom: 10px;
 }
 
-.redes-sociais a {
-  margin: 0 10px;
+footer .redes-sociais a {
   color: #58a6ff;
   text-decoration: none;
   font-size: 24px;
@@ -114,7 +99,6 @@ footer .redes-sociais a:hover {
 
 footer p {
   font-size: 14px;
-  margin: 0;
 }
 
 /* Responsivo */
