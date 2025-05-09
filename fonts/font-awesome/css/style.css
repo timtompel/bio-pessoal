@@ -26,7 +26,7 @@ header {
 }
 
 header.banner {
-  background-image: url('../../../dados/img/foto.png');
+  background-image: url('https://static.vecteezy.com/system/resources/previews/000/677/302/large_2x/abstract-technology-banner-background.jpg');
   background-size: cover;
   background-position: center;
   height: 300px;
