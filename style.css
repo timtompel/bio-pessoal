@@ -1,3 +1,7 @@
+:root {
+  --cor-destaque: #58a6ff;
+  --cor-fundo: #0d1117;
+}
 /* Reset básico */
 * {
   margin: 0;
@@ -12,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: #333;
+  color: #58a6ff;
   padding: 20px;
   text-align: center;
 }
@@ -20,7 +24,7 @@ body {
 /* Cabeçalho */
 header {
   background: #0d1117;
-  color: #fff;
+  color: #58a6ff;
   padding: 20px 0;
   text-align: center;
 }
@@ -60,7 +64,7 @@ nav a {
 }
 
 .card {
-  background-color: #fff;
+  background-color: #0d1117;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -71,8 +75,8 @@ nav a {
 
 /* Rodapé */
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #0d1117;
+  color: #58a6ff;
   padding: 20px 0;
   text-align: center;
 }
@@ -85,14 +89,14 @@ footer {
 }
 
 .redes-sociais a {
-    color: #fff;
+    color: #58a6ff;
     font-size: 24px;
     text-decoration: none;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .redes-sociais a:hover {
-    color: #1da1f2; /* Cor de destaque ao passar o mouse */
+    color: #58a6ff; /* Cor de destaque ao passar o mouse */
     transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
 
