@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }, index * 200);
     });
 
-    particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('Particles.js carregado!');
-});
     // Interação com botões das redes sociais
     const socialButtons = document.querySelectorAll(".redes-sociais a");
     socialButtons.forEach(button => {
