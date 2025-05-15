@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 3. Configura o player moderno para reproduzir faixa1.mp3
-  const audio = document.getElementById("audio"); // Exemplo: <audio id="audio" src="assets/sound/faixa1.mp3"></audio>
+  const audio = document.getElementById("bg-music"); // Exemplo: <audio id="audio" src="assets/sound/faixa1.mp3"></audio>
   const playPause = document.getElementById("playPause"); // Botão customizado para play/pause
   const progressContainer = document.getElementById("progressContainer");
   const progress = document.getElementById("progress");
