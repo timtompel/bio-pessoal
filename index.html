@@ -11,8 +11,20 @@
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
 </head>
 <body>
-  <!-- O player de música foi removido para que não interferia no layout -->
-  
+  <!-- Player de áudio moderno -->
+  <div id="customPlayer">
+    <!-- O elemento de áudio é oculto (os controles serão os customizados) -->
+    <audio id="audio" src="assets/sound/faixa1.mp3"></audio>
+    <div id="controls">
+      <button id="playPause"><i class="fas fa-play"></i></button>
+      <div id="progressContainer">
+        <div id="progress"></div>
+      </div>
+      <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+    </div>
+  </div>
+
+  <!-- Conteúdo original do site -->
   <header class="banner">
     <h1>Targino Games</h1>
   </header>
