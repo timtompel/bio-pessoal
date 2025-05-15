@@ -1,114 +1,67 @@
-:root {
-  --cor-destaque: #58a6ff;
-  --cor-fundo: #0d1117;
-}
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #58a6ff;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Cabeçalho */
-header {
-  background: #0d1117;
-  color: #58a6ff;
-  padding: 20px 0;
-  text-align: center;
-}
-
-header.banner {
-    background-image: url('banner.png');
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Navegação */
-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-}
-
-nav a {
-  color: #58a6ff;
-  text-decoration: none;
-}
-
-/* Grid de projetos */
-.grid-projetos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
-  background-color: #0d1117;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(20px); /* Deslocada para baixo */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Suaviza a transição */
-}
-
-/* Rodapé */
-footer {
-  background-color: #0d1117;
-  color: #58a6ff;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.redes-sociais {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.redes-sociais a {
-    color: #58a6ff;
-    font-size: 24px;
-    text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.redes-sociais a:hover {
-    color: #58a6ff; /* Cor de destaque ao passar o mouse */
-    transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
-}
-
-footer p {
-  font-size: 14px;
-}
-
-/* Responsivo */
+/* Ajuste para o modo de Cores Forçadas (Forced Colors) */
 @media (forced-colors: active) {
-    body {
-        background-color: Canvas;
-        color: CanvasText;
-    }
+  body {
+    background-color: Canvas;
+    color: CanvasText;
+  }
 }
 
+/* Estilos do Player */
+#player {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: #333;
+  border-radius: 8px;
+  text-align: center;
+  color: #eee;
+}
+
+#audioPlayer {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Estilos da Playlist */
+.playlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.playlist li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+}
+
+.playlist li:hover,
+.playlist li.active {
+  background-color: #444;
+}
+
+/* Estilos do Botão de Reprodução */
+#startPlayback {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Estilos Mobile */
+@media (max-width: 600px) {
+  #player {
+    width: 95%;
+    padding: 10px;
+  }
+  .playlist {
+    max-height: 150px;
+  }
+}
