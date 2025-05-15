@@ -30,16 +30,16 @@ header {
 }
 
 header.banner {
-  background-image: url('https://github.com/timtompel/bio-pessoal/blob/main/Targino-Games-03-04-2025%20(4).png');
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background-image: url('./Targino-Games-03-04-2025%20(4).png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Navegação */
