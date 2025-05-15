@@ -1,22 +1,25 @@
 // script.js
 
-// Quando o DOM estiver completamente carregado...
 document.addEventListener("DOMContentLoaded", () => {
-  // Seleciona todos os elementos de projeto (cards)
+  // Anima os cards dos projetos para que fiquem visíveis
   const cards = document.querySelectorAll(".card");
-
-  // Anima os cards: torna-os visíveis e remove o deslocamento vertical
-  cards.forEach(card => {
+  cards.forEach((card) => {
     card.style.opacity = "1";
     card.style.transform = "translateY(0)";
   });
 
-  // Prepara o som coin.mp3. Certifique-se de que o arquivo coin.mp3 esteja na mesma pasta ou ajuste o caminho.
+  // Prepara o som coin.mp3 para ser reproduzido
+  // Certifique-se de que o arquivo coin.mp3 esteja no mesmo diretório ou ajuste o caminho abaixo.
   const coinSound = new Audio("coin.mp3");
 
-  // Adiciona um event listener para cada card que, ao ser clicado, toca o som coin.mp3.
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
+  // Seleciona todos os botões (links) das redes sociais
+  const socialLinks = document.querySelectorAll(".redes-sociais a");
+
+  // Para cada link, adiciona o evento que toca o som ao passar o mouse
+  socialLinks.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      // Recomeça o som caso ele já esteja tocando
+      coinSound.currentTime = 0;
       coinSound.play().catch(error => {
         console.error("Erro ao reproduzir coin.mp3:", error);
       });
