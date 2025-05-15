@@ -63,6 +63,13 @@ nav a {
   padding: 20px;
 }
 
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+}
+
 .card {
   background-color: #0d1117;
   padding: 15px;
