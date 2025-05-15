@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const socialLinks = document.querySelectorAll(".redes-sociais a");
   socialLinks.forEach(link => {
     link.addEventListener("mouseenter", () => {
-      coinSound.currentTime = 0; // Reinicia o som
+      coinSound.currentTime = 0; // Reinicia o som para cada nova interação
       coinSound.play().catch(error => {
         console.error("Erro ao tentar reproduzir coin.mp3:", error);
       });
@@ -22,9 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 3. Configura o player moderno para reproduzir faixa1.mp3
-  // Esses elementos devem existir no HTML para que a funcionalidade seja ativada.
-  const audio = document.getElementById("audio");
-  const playPause = document.getElementById("playPause");
+  const audio = document.getElementById("audio"); // Exemplo: <audio id="audio" src="assets/sound/faixa1.mp3"></audio>
+  const playPause = document.getElementById("playPause"); // Botão customizado para play/pause
   const progressContainer = document.getElementById("progressContainer");
   const progress = document.getElementById("progress");
   const currentTimeElem = document.getElementById("currentTime");
@@ -33,20 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (audio && playPause && progressContainer && progress && currentTimeElem && durationElem) {
     // Adiciona um listener para erros no elemento de áudio
     audio.addEventListener("error", (e) => {
-      console.error("A erro ao carregar/reproduzir o áudio:", audio.error);
+      console.error("Erro ao carregar/reproduzir o áudio:", audio.error);
     });
-    
+
     // Garante que o áudio seja pré-carregado
     audio.preload = "auto";
 
-    // Função para formatar o tempo (minutos:segundos)
+    // Função para formatar o tempo (ex.: 2:05)
     function formatTime(time) {
       const minutes = Math.floor(time / 60) || 0;
       const seconds = Math.floor(time % 60) || 0;
       return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
-    // Atualiza a duração do áudio assim que ele estiver carregado
+    // Atualiza a duração total assim que os metadados forem carregados
     audio.addEventListener("loadedmetadata", () => {
       console.log("Metadata carregada, duração:", audio.duration);
       durationElem.textContent = formatTime(audio.duration);
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Botão de play/pause
+    // Botão de play/pause: alterna entre reproduzir e pausar
     playPause.addEventListener("click", () => {
       if (audio.paused) {
         audio.play().then(() => {
