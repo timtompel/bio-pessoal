@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 3. Configura o player moderno para reproduzir faixa1.mp3
-  // Estes elementos devem existir no HTML para que a funcionalidade seja ativada.
+  // Esses elementos devem existir no HTML para que a funcionalidade seja ativada.
   const audio = document.getElementById("audio");
   const playPause = document.getElementById("playPause");
   const progressContainer = document.getElementById("progressContainer");
@@ -30,21 +30,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTimeElem = document.getElementById("currentTime");
   const durationElem = document.getElementById("duration");
 
-  // Verifica se o player está presente na página
   if (audio && playPause && progressContainer && progress && currentTimeElem && durationElem) {
-    // Função para formatar o tempo em minutos e segundos
+    // Adiciona um listener para erros no elemento de áudio
+    audio.addEventListener("error", (e) => {
+      console.error("A erro ao carregar/reproduzir o áudio:", audio.error);
+    });
+    
+    // Garante que o áudio seja pré-carregado
+    audio.preload = "auto";
+
+    // Função para formatar o tempo (minutos:segundos)
     function formatTime(time) {
       const minutes = Math.floor(time / 60) || 0;
       const seconds = Math.floor(time % 60) || 0;
       return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
-    // Atualiza a duração total assim que os metadados forem carregados
+    // Atualiza a duração do áudio assim que ele estiver carregado
     audio.addEventListener("loadedmetadata", () => {
+      console.log("Metadata carregada, duração:", audio.duration);
       durationElem.textContent = formatTime(audio.duration);
     });
 
-    // Atualiza a barra de progresso e o tempo atual durante a reprodução
+    // Atualiza a barra de progresso e o tempo atual enquanto o áudio toca
     audio.addEventListener("timeupdate", () => {
       if (audio.duration) {
         const percent = (audio.currentTime / audio.duration) * 100;
@@ -53,18 +61,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Botão de play/pause: alterna entre reproduzir e pausar
+    // Botão de play/pause
     playPause.addEventListener("click", () => {
       if (audio.paused) {
-        audio.play();
-        playPause.innerHTML = '<i class="fas fa-pause"></i>';
+        audio.play().then(() => {
+          playPause.innerHTML = '<i class="fas fa-pause"></i>';
+          console.log("Áudio está tocando");
+        }).catch(error => {
+          console.error("Erro ao reproduzir áudio:", error);
+        });
       } else {
         audio.pause();
         playPause.innerHTML = '<i class="fas fa-play"></i>';
       }
     });
 
-    // Permite que o usuário avance na faixa ao clicar na barra de progresso
+    // Permite que o usuário avance na faixa clicando na barra de progresso
     progressContainer.addEventListener("click", function(e) {
       const width = this.clientWidth;
       const clickX = e.offsetX;
@@ -72,5 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.currentTime = (clickX / width) * audio.duration;
       }
     });
+  } else {
+    console.warn("Elementos do player personalizado não foram encontrados na página.");
   }
 });
