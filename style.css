@@ -30,7 +30,7 @@ header {
 }
 
 header.banner {
-    background-image: url('./Targino-Games-03-04-2025%20(4).png');
+    background-image: url('banner.png');
     background-size: cover;
     background-position: center;
     height: 300px;
