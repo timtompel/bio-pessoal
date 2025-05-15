@@ -1,122 +1,114 @@
-/* ================= Global & Site Styles ================= */
+:root {
+  --cor-destaque: #58a6ff;
+  --cor-fundo: #0d1117;
+}
 
-/* Exemplo de reset e estilos globais (personalize conforme o site original) */
-body {
-  font-family: Arial, sans-serif;
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
-  color: #333;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-image: url('../../../dados/img/fundo.png'); /* Caminho relativo */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--cor-destaque);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Cabeçalho */
+header {
+  background: var(--cor-fundo);
+  color: var(--cor-destaque);
+  padding: 20px 0;
+  text-align: center;
 }
 
 header.banner {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+  background-image: url('banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+/* Navegação */
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-  background: #444;
   display: flex;
   justify-content: center;
+  gap: 20px;
+  list-style: none;
 }
-nav ul li {
-  margin: 0 15px;
-}
-nav ul li a {
-  color: #fff;
+
+nav a {
+  color: var(--cor-destaque);
   text-decoration: none;
 }
 
+/* Grid de projetos */
 .grid-projetos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
 .card {
-  background: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-
-/* ================= Player Styles ================= */
-
-#player {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: #333;
+  background-color: var(--cor-fundo);
+  padding: 15px;
   border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Inicialmente invisível */
+  transform: translateY(20px); /* Deslocada para baixo */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Suaviza a transição */
+}
+
+/* Rodapé */
+footer {
+  background-color: var(--cor-fundo);
+  color: var(--cor-destaque);
+  padding: 20px 0;
   text-align: center;
-  color: #eee;
 }
 
-#audioPlayer {
-  width: 100%;
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
   margin-bottom: 10px;
 }
 
-.playlist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  max-height: 200px;
-  overflow-y: auto;
+.redes-sociais a {
+  color: var(--cor-destaque);
+  font-size: 24px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.playlist li {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #444;
+.redes-sociais a:hover {
+  color: var(--cor-destaque); /* Cor de destaque ao passar o mouse */
+  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
 
-.playlist li:hover,
-.playlist li.active {
-  background-color: #444;
+footer p {
+  font-size: 14px;
 }
 
-#startPlayback {
-  margin-bottom: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-}
-
-/* Forçada: Correção de modos de cores */
-@media (forced-colors: active) {
-  body {
-    background-color: Canvas;
-    color: CanvasText;
-  }
-}
-
-/* ================= Responsive Mobile Styles ================= */
-
-@media (max-width: 600px) {
-  #player {
-    width: 95%;
-    padding: 10px;
-  }
-  .playlist {
-    max-height: 150px;
+/* Responsivo */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
   }
 }
