@@ -1,27 +1,19 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Anima os cards dos projetos para que fiquem visíveis
-  const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    card.style.opacity = "1";
-    card.style.transform = "translateY(0)";
-  });
+  // Seleciona os elementos de social e define o som com o caminho correto
+  const coinSound = new Audio("assets/sound/coin.mp3");
+  
+  // Opcional: ajuste o volume se necessário
+  coinSound.volume = 1.0;
 
-  // Prepara o som coin.mp3 para ser reproduzido
-  // Certifique-se de que o arquivo coin.mp3 esteja no mesmo diretório ou ajuste o caminho abaixo.
-  const coinSound = new Audio("coin.mp3");
-
-  // Seleciona todos os botões (links) das redes sociais
+  // Seleciona todos os links dentro da seção de redes sociais
   const socialLinks = document.querySelectorAll(".redes-sociais a");
 
-  // Para cada link, adiciona o evento que toca o som ao passar o mouse
+  // Adiciona um listener de "mouseenter" a cada link para reproduzir o som
   socialLinks.forEach(link => {
     link.addEventListener("mouseenter", () => {
-      // Recomeça o som caso ele já esteja tocando
-      coinSound.currentTime = 0;
+      coinSound.currentTime = 0; // Reinicia o som
       coinSound.play().catch(error => {
-        console.error("Erro ao reproduzir coin.mp3:", error);
+        console.error("Erro ao tentar reproduzir coin.mp3:", error);
       });
     });
   });
