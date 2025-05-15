@@ -1,3 +1,6 @@
+/playlist.m3u
+  Content-Type: audio/x-mpegurl
+
 /*
   Permissions-Policy: payment=(self)
 
