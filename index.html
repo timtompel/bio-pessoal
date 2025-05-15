@@ -10,28 +10,58 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
   <style>
-    /* Estilos para correção do aviso de depreciação do -ms-high-contrast */
+    /* Correção do aviso de depreciação do -ms-high-contrast */
     @media (forced-colors: active) {
       body {
         background-color: Canvas;
         color: CanvasText;
       }
     }
+
+    /* Estilos do Player Personalizado */
+    #player {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: #333;
+      border-radius: 8px;
+      text-align: center;
+      color: #eee;
+    }
+    #audioPlayer {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .playlist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    .playlist li {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #444;
+    }
+    .playlist li:hover,
+    .playlist li.active {
+      background-color: #444;
+    }
   </style>
 </head>
 <body>
-  <!-- Player de rádio incorporado com sandbox para melhorar compatibilidade -->
-  <iframe title="Rádio Targino Games" 
-          src="https://drive.google.com/drive/u/3/folders/1wy8AQErFv2uTWD0LOYOEYckSrIgiTOhM" 
-          width="1366" 
-          height="57" 
-          frameborder="0" 
-          allowfullscreen="0"
-          sandbox="allow-scripts allow-same-origin">
-  </iframe>
+  <!-- Player de Áudio Personalizado -->
+  <div id="player">
+    <h2>Meu Player Personalizado</h2>
+    <audio id="audioPlayer" controls></audio>
+    <ul class="playlist" id="playlist">
+      <!-- Itens da playlist serão adicionados via JavaScript -->
+    </ul>
+  </div>
 
+  <!-- Resto da Estrutura do Site -->
   <header class="banner">
-    <h1></h1>
+    <h1>Targino Games</h1>
   </header>
 
   <nav>
@@ -69,7 +99,62 @@
     </div>
     <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
   </footer>
+  
+  <!-- Script para o Player Personalizado -->
+  <script>
+    // Defina a playlist com os títulos e URLs (substitua FILE_ID_x pelos IDs corretos)
+    const playlist = [
+      {
+        title: "Minha Música",
+        url: "https://drive.google.com/uc?export=download&id=1BkS0HkL2MfNX-9dQTIlnKB_rQIX_nFQU"
+      }
+      // Você pode adicionar mais itens a esta lista, por exemplo:
+      // { title: "Outra Música", url: "https://drive.google.com/uc?export=download&id=OUTRO_FILE_ID" }
+    ];
 
+    const audioPlayer = document.getElementById("audioPlayer");
+    const playlistElement = document.getElementById("playlist");
+    let currentTrack = 0;
+
+    // Carrega uma faixa na tag audio e atualiza a playlist
+    function loadTrack(index) {
+      audioPlayer.src = playlist[index].url;
+      updateActiveTrack(index);
+    }
+
+    // Atualiza a classe 'active' para o item da playlist atualmente tocado
+    function updateActiveTrack(index) {
+      const items = playlistElement.getElementsByTagName("li");
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove("active");
+      }
+      items[index].classList.add("active");
+    }
+
+    // Inicia a reprodução da faixa selecionada
+    function playTrack(index) {
+      currentTrack = index;
+      loadTrack(index);
+      audioPlayer.play();
+    }
+
+    // Cria dinamicamente os itens da playlist
+    playlist.forEach((track, index) => {
+      const li = document.createElement("li");
+      li.textContent = track.title;
+      li.addEventListener("click", () => playTrack(index));
+      playlistElement.appendChild(li);
+    });
+
+    // Carrega a primeira faixa automaticamente
+    loadTrack(currentTrack);
+
+    // Ao terminar uma faixa, avança para a próxima em loop
+    audioPlayer.addEventListener("ended", () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      playTrack(currentTrack);
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
