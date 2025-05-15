@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const durationElem = document.getElementById("duration");
 
   if (audio && playPause && progressContainer && progress && currentTimeElem && durationElem) {
-    // Adiciona um listener para erros no elemento de áudio
-    audio.addEventListener("error", (e) => {
-      console.error("Erro ao carregar/reproduzir o áudio:", audio.error);
-    });
+  // Código do player...
+} else {
+  console.warn("Elementos do player personalizado não foram encontrados na página.");
+}
 
     // Garante que o áudio seja pré-carregado
     audio.preload = "auto";
