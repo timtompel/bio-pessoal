@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site pessoal de Emmanuel Targino - Portfólio, projetos e contato.">
-    <meta name="keywords" content="portfolio, projetos, programação, redes sociais">
-    <title>Bio Pessoal</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
-    <style>
-        @media (forced-colors: active) {
-            body {
-                background-color: Canvas;
-                color: CanvasText;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site pessoal de Emmanuel Targino - Portfólio, projetos e contato.">
+  <meta name="keywords" content="portfolio, projetos, programação, redes sociais">
+  <title>Bio Pessoal</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
+  <style>
+    /* Estilos para correção do aviso de depreciação do -ms-high-contrast */
+    @media (forced-colors: active) {
+      body {
+        background-color: Canvas;
+        color: CanvasText;
+      }
+    }
+  </style>
 </head>
 <body>
-    <iframe title="Rádio Targino Games" src="https://suamusica.com.br/embed/music/55993020/topbar/1/light"
-        width="1366" height="57" frameborder="0" allowfullscreen="0">
-    </iframe>
+  <!-- Player de rádio incorporado com sandbox para melhorar compatibilidade -->
+  <iframe title="Rádio Targino Games" 
+          src="https://suamusica.com.br/embed/music/40148226/topbar/1/dark" 
+          width="1366" 
+          height="57" 
+          frameborder="0" 
+          allowfullscreen="0"
+          sandbox="allow-scripts allow-same-origin">
+  </iframe>
 
-    <header class="banner">
-        <h1></h1>
-    </header>
+  <header class="banner">
+    <h1>Bem-vindo ao Targino Games</h1>
+  </header>
 
-    <nav>
-        <ul>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <ul>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
 
-    <section id="projetos" class="grid-projetos">
-        <div class="card">Projeto 1</div>
-        <div class="card">Projeto 2</div>
-        <div class="card">Projeto 3</div>
-        <div class="card">Projeto 4</div>
-    </section>
+  <section id="projetos" class="grid-projetos">
+    <div class="card">Projeto 1</div>
+    <div class="card">Projeto 2</div>
+    <div class="card">Projeto 3</div>
+    <div class="card">Projeto 4</div>
+  </section>
 
-    <footer>
-        <div class="redes-sociais">
-            <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.tiktok.com/@timtompel" class="social tiktok" title="TikTok" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.youtube.com/@timtompel3230" class="social youtube" title="YouTube" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.instagram.com/emmanueltargino071985/" class="social instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.twitch.tv/timtompel" class="social twitch" title="Twitch" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-twitch"></i>
-            </a>
-        </div>
-        <p>© 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
-    </footer>
+  <footer>
+    <div class="redes-sociais">
+      <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.tiktok.com/@timtompel" class="social tiktok" title="TikTok" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://www.youtube.com/@timtompel3230" class="social youtube" title="YouTube" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.instagram.com/emmanueltargino071985/" class="social instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.twitch.tv/timtompel" class="social twitch" title="Twitch" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitch"></i>
+      </a>
+    </div>
+    <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
