@@ -13,10 +13,10 @@
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
 </head>
 <body>
-  <!-- Área do Player -->
+  <!-- Área do Player (novo, sem interferir com o layout original) -->
   <div id="player">
     <h2>Meu Player com Playlist M3U</h2>
-    <!-- Botão para contornar bloqueio de autoplay (precisa de interação do usuário) -->
+    <!-- Botão para contornar bloqueio de autoplay (necessário para interação do usuário) -->
     <button id="startPlayback">Iniciar Reprodução</button>
     <!-- Elemento de áudio com preload e fallback -->
     <audio id="audioPlayer" controls preload="metadata">
@@ -26,7 +26,7 @@
     <ul class="playlist" id="playlist"></ul>
   </div>
 
-  <!-- Outras seções do site -->
+  <!-- Conteúdo original do site -->
   <header class="banner">
     <h1>Targino Games</h1>
   </header>
@@ -64,7 +64,7 @@
     <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
   </footer>
 
-  <!-- Link para o script principal -->
+  <!-- Script principal (contém o player e a lógica da playlist) -->
   <script src="script.js"></script>
 </body>
 </html>
