@@ -93,12 +93,13 @@ footer {
   color: var(--cor-destaque);
   font-size: 24px;
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .redes-sociais a:hover {
-  color: var(--cor-destaque); /* Cor de destaque ao passar o mouse */
-  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
+  color: var(--cor-destaque);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px var(--cor-destaque);
 }
 
 footer p {
