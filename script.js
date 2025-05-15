@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 2. Configura o som coin.mp3 para as redes sociais
-  // Certifique-se de que o arquivo coin.mp3 está em assets/sound/coin.mp3
   const coinSound = new Audio("assets/sound/coin.mp3");
   coinSound.volume = 1.0;
   
@@ -22,19 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 3. Configura o player moderno para reproduzir faixa1.mp3
-  const audio = document.getElementById("bg-music"); // Exemplo: <audio id="audio" src="assets/sound/faixa1.mp3"></audio>
-  const playPause = document.getElementById("playPause"); // Botão customizado para play/pause
+  const audio = document.getElementById("audio"); // Certifique-se de que o ID está correto
+  const playPause = document.getElementById("playPause");
   const progressContainer = document.getElementById("progressContainer");
   const progress = document.getElementById("progress");
   const currentTimeElem = document.getElementById("currentTime");
   const durationElem = document.getElementById("duration");
 
   if (audio && playPause && progressContainer && progress && currentTimeElem && durationElem) {
-  // Código do player...
-} else {
-  console.warn("Elementos do player personalizado não foram encontrados na página.");
-}
-
     // Garante que o áudio seja pré-carregado
     audio.preload = "auto";
 
@@ -47,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Atualiza a duração total assim que os metadados forem carregados
     audio.addEventListener("loadedmetadata", () => {
-      console.log("Metadata carregada, duração:", audio.duration);
       durationElem.textContent = formatTime(audio.duration);
     });
 
@@ -65,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (audio.paused) {
         audio.play().then(() => {
           playPause.innerHTML = '<i class="fas fa-pause"></i>';
-          console.log("Áudio está tocando");
         }).catch(error => {
           console.error("Erro ao reproduzir áudio:", error);
         });
