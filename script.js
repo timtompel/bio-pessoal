@@ -5,26 +5,21 @@ const audioPlayer = document.getElementById("audioPlayer");
 const playlistElement = document.getElementById("playlist");
 const startPlaybackButton = document.getElementById("startPlayback");
 
-/**
- * Atualiza as fontes do elemento <audio> para o URL fornecido.
- * Aqui, cria uma tag <source> para MP3.
- */
+/** Atualiza as fontes do elemento <audio> para o URL fornecido */
 function updateAudioSources(url) {
   audioPlayer.innerHTML = "";
   const sourceMP3 = document.createElement("source");
   sourceMP3.src = url;
   sourceMP3.type = "audio/mpeg";
   audioPlayer.appendChild(sourceMP3);
-  // Se houver arquivo em OGG, descomente e ajuste a URL:
+  // Se você tiver uma versão OGG, descomente o bloco abaixo:
   // const sourceOGG = document.createElement("source");
-  // sourceOGG.src = url; // Utilize outra URL, se disponível
+  // sourceOGG.src = url; // Utilize uma URL diferente se necessário
   // sourceOGG.type = "audio/ogg";
   // audioPlayer.appendChild(sourceOGG);
 }
 
-/**
- * Carrega uma faixa de acordo com o índice e atualiza a interface.
- */
+/** Carrega uma faixa pelo índice e atualiza a interface */
 function loadTrack(index) {
   if (index < playlist.length) {
     const track = playlist[index];
@@ -34,9 +29,7 @@ function loadTrack(index) {
   }
 }
 
-/**
- * Atualiza a classe "active" para indicar a faixa atualmente selecionada.
- */
+/** Atualiza o item ativo na lista da playlist */
 function updateActiveTrack(index) {
   const items = playlistElement.getElementsByTagName("li");
   for (let i = 0; i < items.length; i++) {
@@ -47,9 +40,7 @@ function updateActiveTrack(index) {
   }
 }
 
-/**
- * Inicia a reprodução da faixa e tenta reproduzir o áudio.
- */
+/** Inicia a reprodução da faixa selecionada */
 function playTrack(index) {
   currentTrack = index;
   loadTrack(index);
@@ -58,9 +49,7 @@ function playTrack(index) {
   });
 }
 
-/**
- * Popula a interface da playlist com os itens carregados.
- */
+/** Popula a interface da playlist com os itens carregados */
 function populatePlayer() {
   playlistElement.innerHTML = "";
   playlist.forEach((track, index) => {
@@ -72,10 +61,7 @@ function populatePlayer() {
   loadTrack(currentTrack);
 }
 
-/**
- * Busca e interpreta o arquivo playlist.m3u.
- * Em caso de erro, utiliza uma playlist padrão.
- */
+/** Função assíncrona para carregar e interpretar o arquivo playlist.m3u */
 async function loadM3U() {
   try {
     const response = await fetch('playlist.m3u');
@@ -97,7 +83,7 @@ async function loadM3U() {
     populatePlayer();
   } catch (err) {
     console.error("Erro:", err);
-    // Fallback: utiliza uma playlist padrão
+    // Fallback: usa uma playlist padrão
     playlist = [
       { title: "Faixa 1", url: "audio1.mp3" },
       { title: "Faixa 2", url: "audio2.mp3" }
@@ -106,7 +92,7 @@ async function loadM3U() {
   }
 }
 
-// Pré-carrega a próxima faixa para melhor performance
+// Pré-carrega a próxima faixa para melhorar a performance
 window.addEventListener('load', () => {
   audioPlayer.addEventListener('playing', () => {
     const nextTrack = (currentTrack + 1) % playlist.length;
@@ -116,13 +102,13 @@ window.addEventListener('load', () => {
   });
 });
 
-// Quando a faixa termina, avança para a próxima (em loop)
+// Ao término da faixa, avançar para a próxima (loop infinito)
 audioPlayer.addEventListener("ended", () => {
   currentTrack = (currentTrack + 1) % playlist.length;
   playTrack(currentTrack);
 });
 
-// Inicia a reprodução após o clique do botão para contornar o bloqueio de autoplay
+// Inicia a reprodução após o clique (necessário para contornar bloqueios de autoplay)
 startPlaybackButton.addEventListener("click", () => {
   playTrack(currentTrack);
   startPlaybackButton.style.display = "none";
