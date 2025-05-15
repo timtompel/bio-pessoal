@@ -7,92 +7,29 @@
   <meta name="keywords" content="portfolio, projetos, programação, redes sociais">
   <title>Bio Pessoal - Meu Player com Playlist M3U</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Link para o CSS principal -->
   <link rel="stylesheet" href="style.css">
+  <!-- Ícones do Font Awesome -->
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
-  <style>
-    /* Correção do aviso de depreciação: Forced Colors */
-    @media (forced-colors: active) {
-      body {
-        background-color: Canvas;
-        color: CanvasText;
-      }
-    }
-
-    /* Estilos do Player */
-    #player {
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
-      background: #333;
-      border-radius: 8px;
-      text-align: center;
-      color: #eee;
-    }
-    /* Estilos do elemento de áudio */
-    #audioPlayer {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-    .playlist {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      text-align: left;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    .playlist li {
-      padding: 10px;
-      cursor: pointer;
-      border-bottom: 1px solid #444;
-    }
-    .playlist li:hover,
-    .playlist li.active {
-      background-color: #444;
-    }
-    /* Botão para iniciar reprodução (interação obrigatória no mobile) */
-    #startPlayback {
-      margin-bottom: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #555;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-    }
-    /* Estilos Mobile */
-    @media (max-width: 600px) {
-      #player {
-        width: 95%;
-        padding: 10px;
-      }
-      .playlist {
-        max-height: 150px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <!-- Player de Áudio Personalizado -->
+  <!-- Área do Player -->
   <div id="player">
     <h2>Meu Player com Playlist M3U</h2>
-    <!-- Botão para forçar interação e contornar bloqueios de autoplay -->
+    <!-- Botão para contornar bloqueio de autoplay (precisa de interação do usuário) -->
     <button id="startPlayback">Iniciar Reprodução</button>
-    <!-- Elemento de áudio com fallbacks para diferentes formatos -->
+    <!-- Elemento de áudio com preload e fallback -->
     <audio id="audioPlayer" controls preload="metadata">
       Seu navegador não suporta o elemento de áudio.
-      <!-- As tags <source> serão atualizadas via JavaScript -->
-      <source src="" type="audio/mpeg">
-      <source src="" type="audio/ogg">
     </audio>
     <!-- Lista de reprodução (será populada via JavaScript) -->
     <ul class="playlist" id="playlist"></ul>
   </div>
 
-  <!-- Estrutura complementar do site (cabeçalho, navegação, etc.) -->
+  <!-- Outras seções do site -->
   <header class="banner">
-   </header>
+    <h1>Targino Games</h1>
+  </header>
   <nav>
     <ul>
       <li><a href="#projetos">Projetos</a></li>
@@ -127,132 +64,7 @@
     <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
   </footer>
 
-  <!-- Script para controlar o player e carregar a playlist M3U -->
-  <script>
-    let playlist = []; // Será preenchida com os itens da M3U
-    let currentTrack = 0;
-    const audioPlayer = document.getElementById("audioPlayer");
-    const playlistElement = document.getElementById("playlist");
-    const startPlaybackButton = document.getElementById("startPlayback");
-
-    // Atualiza as tags <source> do elemento <audio> para o URL passado (MP3 e, opcionalmente, OGG)
-    function updateAudioSources(url) {
-      // Limpa os conteúdos atuais do audioPlayer
-      audioPlayer.innerHTML = "";
-      // Cria source para MP3
-      const sourceMP3 = document.createElement("source");
-      sourceMP3.src = url;
-      sourceMP3.type = "audio/mpeg";
-      audioPlayer.appendChild(sourceMP3);
-      // Se você tiver uma versão OGG, descomente o bloco abaixo:
-      // const sourceOGG = document.createElement("source");
-      // sourceOGG.src = url; // Substitua por outra URL caso disponha do formato OGG
-      // sourceOGG.type = "audio/ogg";
-      // audioPlayer.appendChild(sourceOGG);
-    }
-
-    // Carrega uma faixa e atualiza a interface
-    function loadTrack(index) {
-      if (index < playlist.length) {
-        const track = playlist[index];
-        updateAudioSources(track.url);
-        audioPlayer.load();
-        updateActiveTrack(index);
-      }
-    }
-
-    // Atualiza a classe "active" para o item atualmente selecionado na playlist
-    function updateActiveTrack(index) {
-      const items = playlistElement.getElementsByTagName("li");
-      for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove("active");
-      }
-      if (items[index]) {
-        items[index].classList.add("active");
-      }
-    }
-
-    // Toca a faixa selecionada
-    function playTrack(index) {
-      currentTrack = index;
-      loadTrack(index);
-      audioPlayer.play().catch(error => {
-        console.error("Erro ao tentar reproduzir o áudio:", error);
-      });
-    }
-
-    // Popula a lista da playlist na interface
-    function populatePlayer() {
-      playlistElement.innerHTML = "";
-      playlist.forEach((track, index) => {
-        const li = document.createElement("li");
-        li.textContent = track.title;
-        li.addEventListener("click", () => playTrack(index));
-        playlistElement.appendChild(li);
-      });
-      loadTrack(currentTrack);
-    }
-
-    // Função assíncrona para buscar e interpretar o arquivo playlist.m3u
-    async function loadM3U() {
-      try {
-        const response = await fetch('playlist.m3u');
-        if (!response.ok) throw new Error('Erro ao carregar playlist');
-        const data = await response.text();
-        // Processa o conteúdo da M3U
-        const lines = data.split('\n').map(line => line.trim()).filter(line => line !== "");
-        let newPlaylist = [];
-        let currentTitle = "";
-        lines.forEach(line => {
-          if (line.startsWith("#EXTINF:")) {
-            // Extraindo o título a partir da vírgula
-            const commaIndex = line.indexOf(",");
-            currentTitle = commaIndex !== -1 ? line.substring(commaIndex + 1).trim() : "Sem título";
-          } else if (!line.startsWith("#")) {
-            // Linha com a URL do arquivo de áudio
-            newPlaylist.push({ title: currentTitle || "Sem título", url: line });
-            currentTitle = "";
-          }
-        });
-        playlist = newPlaylist;
-        populatePlayer();
-      } catch (err) {
-        console.error("Erro:", err);
-        // Fallback: Carrega uma playlist padrão
-        playlist = [
-          { title: "Faixa 1", url: "audio1.mp3" },
-          { title: "Faixa 2", url: "audio2.mp3" }
-        ];
-        populatePlayer();
-      }
-    }
-
-    // Ao término da faixa, avança para a próxima (loop infinito)
-    audioPlayer.addEventListener("ended", () => {
-      currentTrack = (currentTrack + 1) % playlist.length;
-      playTrack(currentTrack);
-    });
-
-    // Botão para iniciar a reprodução, necessário para contornar bloqueios de autoplay
-    startPlaybackButton.addEventListener("click", () => {
-      playTrack(currentTrack);
-      startPlaybackButton.style.display = "none";
-    });
-
-    // Melhor performance: pré-carrega a próxima faixa quando a atual começa a tocar
-    window.addEventListener('load', () => {
-      audioPlayer.addEventListener('playing', () => {
-        const nextTrack = (currentTrack + 1) % playlist.length;
-        const preloadAudio = new Audio();
-        preloadAudio.src = playlist[nextTrack].url;
-        preloadAudio.load();
-      });
-    });
-
-    // Carrega a playlist M3U assim que a página for carregada
-    loadM3U();
-  </script>
-  <!-- Se houver outros scripts, eles podem ser carregados aqui -->
+  <!-- Link para o script principal -->
   <script src="script.js"></script>
 </body>
 </html>
