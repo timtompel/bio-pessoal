@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Site pessoal de Emmanuel Targino - Portfólio, projetos e contato.">
   <meta name="keywords" content="portfolio, projetos, programação, redes sociais">
-  <title>Bio Pessoal</title>
+  <title>Bio Pessoal - Meu Player com Playlist M3U</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
   <style>
-    /* Correção do aviso de depreciação: usando forced-colors */
+    /* Correção do aviso de depreciação: usando Forced Colors */
     @media (forced-colors: active) {
       body {
         background-color: Canvas;
         color: CanvasText;
       }
     }
-
     /* Estilos do Player Personalizado */
     #player {
       margin: 20px auto;
@@ -49,7 +48,7 @@
     .playlist li.active {
       background-color: #444;
     }
-    /* Botão para iniciar a reprodução (para contornar bloqueio de auto-play) */
+    /* Botão para iniciar a reprodução (contorna bloqueio de auto-play) */
     #startPlayback {
       margin-bottom: 10px;
       padding: 8px 16px;
@@ -65,18 +64,16 @@
 <body>
   <!-- Player de Áudio Personalizado -->
   <div id="player">
-    <h2>Meu Player Personalizado</h2>
+    <h2>Rádio Targino Games</h2>
     <!-- Botão para iniciar a reprodução com interação do usuário -->
     <button id="startPlayback">Iniciar Reprodução</button>
     <audio id="audioPlayer" controls></audio>
-    <ul class="playlist" id="playlist">
-      <!-- Itens da playlist serão adicionados via JavaScript -->
-    </ul>
+    <ul class="playlist" id="playlist"></ul>
   </div>
 
   <!-- Resto da Estrutura do Site -->
   <header class="banner">
-    </header>
+  </header>
 
   <nav>
     <ul>
@@ -113,30 +110,24 @@
     </div>
     <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
   </footer>
-  
-  <!-- Script para o Player Personalizado -->
-  <script>
-    // Defina a playlist com os títulos e URLs (substitua FILE_ID_x pelos IDs corretos)
-    const playlist = [
-      {
-        title: "Minha Música",
-        url: "https://drive.google.com/uc?export=download&id=1BkS0HkL2MfNX-9dQTIlnKB_rQIX_nFQU"
-      }
-      // Adicione mais itens conforme necessário
-    ];
 
+  <!-- Script para carregar e interpretar a playlist M3U e controlar o player -->
+  <script>
+    let playlist = []; // Será preenchida ao carregar o arquivo M3U
+    let currentTrack = 0;
     const audioPlayer = document.getElementById("audioPlayer");
     const playlistElement = document.getElementById("playlist");
     const startPlaybackButton = document.getElementById("startPlayback");
-    let currentTrack = 0;
 
-    // Carrega uma faixa na tag audio e atualiza a playlist
+    // Função para carregar uma faixa e atualizar a exibição
     function loadTrack(index) {
-      audioPlayer.src = playlist[index].url;
-      updateActiveTrack(index);
+      if (index < playlist.length) {
+        audioPlayer.src = playlist[index].url;
+        updateActiveTrack(index);
+      }
     }
 
-    // Atualiza a classe 'active' para o item da playlist atualmente tocado
+    // Atualiza o item ativo na lista da playlist
     function updateActiveTrack(index) {
       const items = playlistElement.getElementsByTagName("li");
       for (let i = 0; i < items.length; i++) {
@@ -151,40 +142,62 @@
     function playTrack(index) {
       currentTrack = index;
       loadTrack(index);
-      // Tenta reproduzir e captura possíveis erros
       audioPlayer.play().catch(error => {
         console.error("Erro ao tentar reproduzir o áudio:", error);
       });
     }
 
-    // Cria dinamicamente os itens da playlist
-    playlist.forEach((track, index) => {
-      const li = document.createElement("li");
-      li.textContent = track.title;
-      li.addEventListener("click", () => playTrack(index));
-      playlistElement.appendChild(li);
-    });
+    // Cria a lista da playlist no HTML
+    function populatePlayer() {
+      playlistElement.innerHTML = "";
+      playlist.forEach((track, index) => {
+        const li = document.createElement("li");
+        li.textContent = track.title;
+        li.addEventListener("click", () => playTrack(index));
+        playlistElement.appendChild(li);
+      });
+      loadTrack(currentTrack);
+    }
 
-    // Carrega a primeira faixa automaticamente (mas não auto-play)
-    loadTrack(currentTrack);
+    // Função para buscar e interpretar a playlist M3U
+    function loadM3U() {
+      fetch('playlist.m3u')
+        .then(response => response.text())
+        .then(data => {
+          const lines = data.split('\n').map(line => line.trim()).filter(line => line !== "");
+          let newPlaylist = [];
+          let currentTitle = "";
+          lines.forEach(line => {
+            if (line.startsWith("#EXTINF:")) {
+              // Extraindo o título após a vírgula
+              const commaIndex = line.indexOf(",");
+              currentTitle = commaIndex !== -1 ? line.substring(commaIndex + 1).trim() : "Sem título";
+            } else if (!line.startsWith("#")) {
+              // Linha com a URL do arquivo de áudio
+              newPlaylist.push({ title: currentTitle || "Sem título", url: line });
+              currentTitle = "";
+            }
+          });
+          playlist = newPlaylist;
+          populatePlayer();
+        })
+        .catch(err => console.error("Erro ao carregar a playlist M3U:", err));
+    }
 
-    // Ao terminar uma faixa, avança para a próxima em loop
+    // Ao término da faixa, avança para a próxima (loop infinito)
     audioPlayer.addEventListener("ended", () => {
       currentTrack = (currentTrack + 1) % playlist.length;
       playTrack(currentTrack);
     });
 
-    // Botão para iniciar a reprodução, contornando a restrição de auto-play
+    // Botão para contornar a restrição de auto-play (precisa de interação do usuário)
     startPlaybackButton.addEventListener("click", () => {
       playTrack(currentTrack);
-      // Opcional: esconder o botão após o início da reprodução
       startPlaybackButton.style.display = "none";
     });
 
-    // Listener para eventuais erros no carregamento/reprodução
-    audioPlayer.addEventListener("error", (e) => {
-      console.error("Erro na reprodução do áudio:", e);
-    });
+    // Carrega a playlist M3U assim que a página for carregada
+    loadM3U();
   </script>
   <script src="script.js"></script>
 </body>
