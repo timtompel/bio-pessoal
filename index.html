@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
   <style>
-    /* Correção do aviso de depreciação do -ms-high-contrast */
+    /* Correção do aviso de depreciação: usando forced-colors */
     @media (forced-colors: active) {
       body {
         background-color: Canvas;
@@ -37,6 +37,8 @@
       padding: 0;
       margin: 0;
       text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
     }
     .playlist li {
       padding: 10px;
@@ -47,12 +49,25 @@
     .playlist li.active {
       background-color: #444;
     }
+    /* Botão para iniciar a reprodução (para contornar bloqueio de auto-play) */
+    #startPlayback {
+      margin-bottom: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
   <!-- Player de Áudio Personalizado -->
   <div id="player">
     <h2>Meu Player Personalizado</h2>
+    <!-- Botão para iniciar a reprodução com interação do usuário -->
+    <button id="startPlayback">Iniciar Reprodução</button>
     <audio id="audioPlayer" controls></audio>
     <ul class="playlist" id="playlist">
       <!-- Itens da playlist serão adicionados via JavaScript -->
@@ -61,8 +76,7 @@
 
   <!-- Resto da Estrutura do Site -->
   <header class="banner">
-    <h1>Targino Games</h1>
-  </header>
+    </header>
 
   <nav>
     <ul>
@@ -108,12 +122,12 @@
         title: "Minha Música",
         url: "https://drive.google.com/uc?export=download&id=1BkS0HkL2MfNX-9dQTIlnKB_rQIX_nFQU"
       }
-      // Você pode adicionar mais itens a esta lista, por exemplo:
-      // { title: "Outra Música", url: "https://drive.google.com/uc?export=download&id=OUTRO_FILE_ID" }
+      // Adicione mais itens conforme necessário
     ];
 
     const audioPlayer = document.getElementById("audioPlayer");
     const playlistElement = document.getElementById("playlist");
+    const startPlaybackButton = document.getElementById("startPlayback");
     let currentTrack = 0;
 
     // Carrega uma faixa na tag audio e atualiza a playlist
@@ -128,14 +142,19 @@
       for (let i = 0; i < items.length; i++) {
         items[i].classList.remove("active");
       }
-      items[index].classList.add("active");
+      if (items[index]) {
+        items[index].classList.add("active");
+      }
     }
 
     // Inicia a reprodução da faixa selecionada
     function playTrack(index) {
       currentTrack = index;
       loadTrack(index);
-      audioPlayer.play();
+      // Tenta reproduzir e captura possíveis erros
+      audioPlayer.play().catch(error => {
+        console.error("Erro ao tentar reproduzir o áudio:", error);
+      });
     }
 
     // Cria dinamicamente os itens da playlist
@@ -146,13 +165,25 @@
       playlistElement.appendChild(li);
     });
 
-    // Carrega a primeira faixa automaticamente
+    // Carrega a primeira faixa automaticamente (mas não auto-play)
     loadTrack(currentTrack);
 
     // Ao terminar uma faixa, avança para a próxima em loop
     audioPlayer.addEventListener("ended", () => {
       currentTrack = (currentTrack + 1) % playlist.length;
       playTrack(currentTrack);
+    });
+
+    // Botão para iniciar a reprodução, contornando a restrição de auto-play
+    startPlaybackButton.addEventListener("click", () => {
+      playTrack(currentTrack);
+      // Opcional: esconder o botão após o início da reprodução
+      startPlaybackButton.style.display = "none";
+    });
+
+    // Listener para eventuais erros no carregamento/reprodução
+    audioPlayer.addEventListener("error", (e) => {
+      console.error("Erro na reprodução do áudio:", e);
     });
   </script>
   <script src="script.js"></script>
