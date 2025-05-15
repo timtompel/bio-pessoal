@@ -105,9 +105,10 @@ footer p {
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+@media (forced-colors: active) {
+    body {
+        background-color: Canvas;
+        color: CanvasText;
+    }
 }
+
