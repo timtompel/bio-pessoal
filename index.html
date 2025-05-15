@@ -3,33 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site pessoal de Emmanuel Targino - Portfólio, projetos e contato.">
+  <meta name="description" content="Site pessoal de Ennanuel Souza Franklin do Nascimento - Portfólio, projetos e contato.">
   <meta name="keywords" content="portfolio, projetos, programação, redes sociais">
-  <title>Bio Pessoal - Meu Player com Playlist M3U</title>
+  <title>Bio Pessoal</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- Link para o CSS principal -->
   <link rel="stylesheet" href="style.css">
-  <!-- Ícones do Font Awesome -->
   <link rel="stylesheet" href="./fonts/font-awesome/css/all.min.css">
 </head>
 <body>
-  <!-- Área do Player (novo, sem interferir com o layout original) -->
-  <div id="player">
-    <h2>Meu Player com Playlist M3U</h2>
-    <!-- Botão para contornar bloqueio de autoplay (necessário para interação do usuário) -->
-    <button id="startPlayback">Iniciar Reprodução</button>
-    <!-- Elemento de áudio com preload e fallback -->
-    <audio id="audioPlayer" controls preload="metadata">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <!-- Lista de reprodução (será populada via JavaScript) -->
-    <ul class="playlist" id="playlist"></ul>
-  </div>
-
-  <!-- Conteúdo original do site -->
+  <!-- O player de música foi removido para que não interferia no layout -->
+  
   <header class="banner">
     <h1>Targino Games</h1>
   </header>
+
   <nav>
     <ul>
       <li><a href="#projetos">Projetos</a></li>
@@ -37,12 +24,14 @@
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
+
   <section id="projetos" class="grid-projetos">
     <div class="card">Projeto 1</div>
     <div class="card">Projeto 2</div>
     <div class="card">Projeto 3</div>
     <div class="card">Projeto 4</div>
   </section>
+
   <footer>
     <div class="redes-sociais">
       <a href="https://www.facebook.com/profile.php?id=61573300074606" class="social facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
@@ -61,10 +50,9 @@
         <i class="fab fa-twitch"></i>
       </a>
     </div>
-    <p>&copy; 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
+    <p>© 2025 Emmanuel Targino. Todos os Direitos Reservados.</p>
   </footer>
 
-  <!-- Script principal (contém o player e a lógica da playlist) -->
   <script src="script.js"></script>
 </body>
 </html>
